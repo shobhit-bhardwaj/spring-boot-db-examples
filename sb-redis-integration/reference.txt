@@ -1,0 +1,38 @@
+cd ShobhiT/Softwares/redis-6.2.5/src
+
+./redis-server
+./redis-cli
+
+
+
+http://localhost:8080/SBRedisApplication/user
+{
+    "userId": 101,
+    "userName": "shobhit",
+    "password": "password",
+    "admin": true
+}
+
+keys *
+hgetall "\xac\xed\x00\x05t\x00\x04User"
+
+
+
+export M2_HOME=$PATH:/Users/shobhitbhardwaj/ShobhiT/Softwares/apache-maven-3.6.3/
+export PATH=$PATH:/Users/shobhitbhardwaj/ShobhiT/Softwares/apache-maven-3.6.3/bin
+
+mvn clean install
+mvn package
+
+
+docker pull redis
+docker run -p 6379:6379 --name redis-standalone -d redis
+
+docker build --tag=user-server .
+docker run -p8080:8080 --link redis-standalone:redis --name=USER user-server
+
+docker start USER
+docker stop USER
+
+docker rm -f USER
+docker image rm -f user-server
