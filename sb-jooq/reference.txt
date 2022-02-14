@@ -1,0 +1,27 @@
+export PATH=$PATH:/usr/local/mysql/bin/
+mysql -uroot -proot
+
+drop database test_db;
+create database test_db;
+use test_db;
+
+create table employ (
+	id int,
+	name varchar(30),
+	designation varchar(30),
+	salary int
+);
+
+select * from employ;
+
+
+http://localhost:8080/SBJOOQ/employ
+{
+    "id": 101,
+    "name": "Shobhit Bhardwaj",
+    "designation": "Software Engineer",
+    "salary": 17000
+}
+
+
+http://localhost:8080/SBJOOQ/employ
