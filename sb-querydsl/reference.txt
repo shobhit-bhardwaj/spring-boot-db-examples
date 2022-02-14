@@ -1,0 +1,44 @@
+export PATH=$PATH:/usr/local/mysql/bin/
+mysql -uroot -proot
+
+drop database test_db;
+create database test_db;
+use test_db;
+
+select * from author;
+select * from book;
+select * from author_books;
+
+
+http://localhost:8080/SBQueryDSL/author
+[
+    {
+        "authorName": "Chetan Bhagat",
+        "authorEmailId": "chetan.bhagat@gmail.com",
+        "books": [
+            {
+                "bookName": "Two States"
+            },
+            {
+                "bookName": "Half Girlfriend"
+            }
+        ]
+    },
+    {
+        "authorName": "Robin Sharma",
+        "authorEmailId": "robin.sharma@gmail.com",
+        "books": [
+            {
+                "bookName": "The Monk Who Sold His Farrari"
+            }
+        ]
+    }
+]
+
+
+http://localhost:8080/SBQueryDSL/author/jpa
+http://localhost:8080/SBQueryDSL/author/Chetan.Bhagat@gmail.com
+http://localhost:8080/SBQueryDSL/author/statistics
+http://localhost:8080/SBQueryDSL/author/querydsl
+http://localhost:8080/SBQueryDSL/author/books
+
